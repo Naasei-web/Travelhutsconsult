@@ -405,6 +405,30 @@ p {
   gap: 1.5rem;
 }
 
+.service-group + .service-group {
+  margin-top: 4.5rem;
+}
+
+.service-group-heading {
+  margin-bottom: 1.5rem;
+}
+
+.service-group-heading h3 {
+  margin-bottom: 0;
+  font-size: clamp(1.5rem, 2.5vw, 2rem);
+}
+
+.main-services {
+  padding: 2rem;
+  border: 1px solid rgba(217, 164, 65, 0.35);
+  border-radius: var(--radius);
+  background: linear-gradient(135deg, rgba(234, 243, 255, 0.9), rgba(255, 248, 226, 0.72));
+}
+
+.main-services .services-grid {
+  gap: 1.25rem;
+}
+
 .service-card,
 .reason-card,
 .package-card,
@@ -419,6 +443,33 @@ p {
 .service-card {
   padding: 2rem 1.5rem;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.main-service-card {
+  position: relative;
+  border: 2px solid rgba(217, 164, 65, 0.48);
+  box-shadow: 0 20px 42px rgba(15, 45, 83, 0.1);
+}
+
+.main-service-card::before {
+  content: "Priority service";
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  color: var(--primary);
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.main-service-card h3 {
+  max-width: 15rem;
+}
+
+.main-service-card .icon-wrap {
+  background: linear-gradient(135deg, var(--primary), #1f5d90);
+  color: var(--white);
 }
 
 .service-card:hover,
@@ -510,10 +561,31 @@ p {
 }
 
 .package-card {
-  padding: 1.6rem 1.35rem;
   display: flex;
   flex-direction: column;
   min-height: 100%;
+  overflow: hidden;
+  padding: 0 1.35rem 1.6rem;
+  background: linear-gradient(180deg, #ffffff 0%, #fbfcfe 100%);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.package-image-wrap {
+  position: relative;
+  height: 235px;
+  margin: 0 -1.35rem 1.4rem;
+  overflow: hidden;
+}
+
+.package-image-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.45s ease;
+}
+
+.package-card:hover .package-image-wrap img {
+  transform: scale(1.04);
 }
 
 .package-header {
@@ -533,10 +605,44 @@ p {
   text-transform: uppercase;
 }
 
+.package-image-wrap .package-badge {
+  position: absolute;
+  left: 1rem;
+  bottom: 1rem;
+  margin: 0;
+  background: rgba(11, 33, 62, 0.78);
+  color: var(--white);
+  backdrop-filter: blur(8px);
+}
+
+.package-location,
+.package-duration {
+  margin-bottom: 0.55rem;
+  color: var(--gold);
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.package-duration {
+  color: var(--muted);
+  letter-spacing: 0.02em;
+  text-transform: none;
+}
+
+.package-card h3 {
+  margin-bottom: 0.55rem;
+}
+
 .package-card ul {
   margin: 0 0 1.3rem;
   padding-left: 1.1rem;
   color: var(--muted);
+}
+
+.package-card li + li {
+  margin-top: 0.35rem;
 }
 
 .package-actions {
@@ -544,6 +650,14 @@ p {
   display: flex;
   flex-wrap: wrap;
   gap: 0.8rem;
+}
+
+.package-disclaimer {
+  max-width: 780px;
+  margin: 2rem auto 0;
+  color: var(--muted);
+  font-size: 0.82rem;
+  text-align: center;
 }
 
 .package-modal {
@@ -625,6 +739,10 @@ p {
   margin: 0;
   padding-left: 1.1rem;
   color: var(--muted);
+}
+
+#packageOverview {
+  margin: 0;
 }
 
 .modal-actions {

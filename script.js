@@ -1,41 +1,32 @@
 const WHATSAPP_NUMBER = "233540924789";
 
 const packageData = {
-  weekend: {
-    title: "Weekend Getaway",
-    destination: "[Destination]",
-    duration: "[X days]",
-    price: "Starting price: [TBD]",
-    accommodation: "[Accommodation details]",
-    flight: "[Flight details if applicable]",
-    activities: ["[Activity 1]", "[Activity 2]", "[Activity 3]"],
-    included: ["[Included item 1]", "[Included item 2]"],
-    excluded: ["[Not included item 1]", "[Not included item 2]"],
-    notes: ["[Important note 1]", "[Important note 2]"]
+  dubai: {
+    title: "Dubai Getaway",
+    destination: "Dubai, UAE",
+    duration: "5 Days / 4 Nights",
+    overview: "A flexible sample travel package for exploring Dubai with support for the key arrangements before you travel.",
+    included: ["Flight booking assistance", "Hotel reservation", "Airport transfer guidance", "Travel insurance assistance"],
+    notes: ["This is a sample package for demonstration.", "Actual availability, destinations, inclusions, requirements and pricing must be confirmed with Travel Huts Consult.", "Travel Huts Consult does not guarantee visa approval, entry, flights or any other third-party outcome."],
+    inquiryMessage: "Hello Travel Huts Consult, I'm interested in the Dubai Getaway package. Please tell me more about the current availability, requirements and pricing."
   },
-  family: {
-    title: "Family Holiday",
-    destination: "[Destination]",
-    duration: "[X days]",
-    price: "Starting price: [TBD]",
-    accommodation: "[Family accommodation details]",
-    flight: "[Flight details if applicable]",
-    activities: ["[Family activity 1]", "[Family activity 2]", "[Family activity 3]"],
-    included: ["[Included item 1]", "[Included item 2]"],
-    excluded: ["[Not included item 1]", "[Not included item 2]"],
-    notes: ["[Important note 1]", "[Important note 2]"]
+  uk: {
+    title: "UK Travel Package",
+    destination: "London, United Kingdom",
+    duration: "7 Days / 6 Nights",
+    overview: "A flexible sample package for planning a London trip with practical travel, accommodation and visa support.",
+    included: ["Flight booking assistance", "Hotel reservation", "Travel insurance guidance", "Visa application support"],
+    notes: ["This is a sample package for demonstration.", "Actual availability, destinations, inclusions, requirements and pricing must be confirmed with Travel Huts Consult.", "Travel Huts Consult does not guarantee visa approval, entry, flights or any other third-party outcome."],
+    inquiryMessage: "Hello Travel Huts Consult, I'm interested in the UK Travel Package. Please tell me more about the current availability, requirements and pricing."
   },
-  business: {
-    title: "Business Travel",
-    destination: "[Destination]",
-    duration: "[X days]",
-    price: "Starting price: [TBD]",
-    accommodation: "[Business accommodation details]",
-    flight: "[Flight details if applicable]",
-    activities: ["[Business activity 1]", "[Business activity 2]", "[Business activity 3]"],
-    included: ["[Included item 1]", "[Included item 2]"],
-    excluded: ["[Not included item 1]", "[Not included item 2]"],
-    notes: ["[Important note 1]", "[Important note 2]"]
+  canada: {
+    title: "Canada Travel Support",
+    destination: "Toronto, Canada",
+    duration: "Flexible",
+    overview: "A flexible sample support package for planning travel to Toronto with guidance around applications, flights and accommodation.",
+    included: ["Visa application guidance", "Flight booking assistance", "Travel insurance guidance", "Accommodation planning"],
+    notes: ["This is a sample package for demonstration.", "Actual availability, destinations, inclusions, requirements and pricing must be confirmed with Travel Huts Consult.", "Travel Huts Consult does not guarantee visa approval, entry, flights or any other third-party outcome."],
+    inquiryMessage: "Hello Travel Huts Consult, I'm interested in the Canada Travel Support package. Please tell me more about the current requirements and services."
   }
 };
 
@@ -61,24 +52,18 @@ function openPackageModal(packageId) {
   document.getElementById('packageModalTitle').textContent = packageItem.title;
   document.getElementById('packageDestination').textContent = packageItem.destination;
   document.getElementById('packageDuration').textContent = packageItem.duration;
-  document.getElementById('packageAccommodation').textContent = packageItem.accommodation;
-  document.getElementById('packageFlight').textContent = packageItem.flight;
-  document.getElementById('packagePrice').textContent = packageItem.price;
+  document.getElementById('packageOverview').textContent = packageItem.overview;
 
   const activityList = document.getElementById('packageActivities');
   const includedList = document.getElementById('packageIncluded');
-  const excludedList = document.getElementById('packageExcluded');
   const notesList = document.getElementById('packageNotes');
 
-  activityList.innerHTML = packageItem.activities.map((item) => `<li>${item}</li>`).join('');
   includedList.innerHTML = packageItem.included.map((item) => `<li>${item}</li>`).join('');
-  excludedList.innerHTML = packageItem.excluded.map((item) => `<li>${item}</li>`).join('');
   notesList.innerHTML = packageItem.notes.map((item) => `<li>${item}</li>`).join('');
 
-  const message = `Hello Travel Huts Consult, I would like to ask about the ${packageItem.title} package.`;
   const askButton = modal.querySelector('a');
   if (askButton) {
-    askButton.href = buildWhatsAppLink(message);
+    askButton.href = buildWhatsAppLink(packageItem.inquiryMessage);
   }
 
   modal.classList.add('is-open');
